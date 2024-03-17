@@ -1,47 +1,27 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import DogList from '../Components/DogList/DogList'
-import Form from '../Components/Form/Form'
-import { Inter } from 'next/font/google'
+import { useState, useEffect } from 'react';
+import DogList from '../components/DogList/DogList';
+import Form from '../components/Form/Form';
 
+export default function Page() {
+    const [dogImages, setDogImages] = useState([]);
+    const [numDogs, setNumDogs] = useState(3);
 
-const inter = Inter({ subsets: ['latin'] })
+    useEffect(() => {
+        fetch(`https://dog.ceo/api/breeds/image/random/${numDogs}`)
+            .then(response => response.json())
+            .then(data => setDogImages(data.message));
+    }, [numDogs]);
 
-export default function Home() {
-  // You will need to put a state here to save all the dogs data into
-  // And you will fetch the data with useEffect
-
-  const [dogg,settDogg] = useState([]);
-  
-  const doggos = async()=>{
-
-   
-try {
-  const response =await fetch("https://dog.ceo/api/breeds/image/random/");
-  const data = await response.json();
-  settDogg([data.message]);
-} catch (error) {
-  alert('no dogs ');
-  
-}
-  
-  }
-  useEffect(()=>{
-doggos()  
-},[])
-
-   return (
-    
-    <div className="card">
-      {/* When the button is clicked in the form, it should fetch the information. 
-          How can we do that by utilizing useState?
+    return (
+      <div className="container mx-auto p-5 " style={{ marginTop: '4rem', color: '#333 !important' }}> 
+          <div className="text-center" >
+              <Form onNumberChange={(number) => setNumDogs(number)} />
+          </div>
+          <DogList dogs={dogImages} />
           
-      */}
-      {/* <Form /> Uncomment <Form /> if you are going after the bonus */}
-      {/* This page should receive the images array */}
-      <DogList dogsList={dogg} />
-    </div>
+      </div>
+  
   );
 }
-
