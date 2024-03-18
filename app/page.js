@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import DogList from '../components/DogList/DogList';
-import Form from '../components/Form/Form';
+import DogList from '../Components/DogList/DogList';
+import Form from '../Components/Form/Form';
 
 export default function Page() {
     const [dogImages, setDogImages] = useState([]);
