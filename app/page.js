@@ -6,6 +6,7 @@ import Form from '../Components/Form/Form';
 import '../app/globals.css';
 
 
+
 export default function Page() {
     const [dogImages, setDogImages] = useState([]);
     const [numDogs, setNumDogs] = useState(3);
