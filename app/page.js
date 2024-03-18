@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import DogList from '../Components/DogList/DogList';
 import Form from '../Components/Form/Form';
+import '../app/globals.css';
+
 
 export default function Page() {
     const [dogImages, setDogImages] = useState([]);

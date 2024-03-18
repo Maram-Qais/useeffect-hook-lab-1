@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+
 function DogList({ dogs }) {
   return (
     <div className="flex flex-wrap justify-center gap-2">
